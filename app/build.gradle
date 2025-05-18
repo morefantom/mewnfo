@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    id 'kotlin-kapt'
 }
 
 android {
@@ -43,13 +45,25 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.lifecycle.runtime
     implementation libs.androidx.activity.compose
+    implementation libs.androidx.appcompat
+    implementation libs.retrofit
+    implementation libs.retrofit.gson
+    implementation libs.androidx.room
+    kapt libs.androidx.room.compiler
+    implementation libs.google.dagger
+    kapt libs.google.dagger.compiler
+
     implementation platform(libs.androidx.compose.bom.get())
     implementation libs.androidx.compose.ui
     implementation libs.androidx.compose.graphics
     implementation libs.androidx.compose.tooling
     implementation libs.androidx.compose.material
 
-    androidTestImplementation libs.test.androidx.compose.junit4
+    debugImplementation libs.test.androidx.compose.junit4
     debugImplementation libs.test.androidx.compose.tooling
     debugImplementation libs.test.androidx.compose.manifest
+}
+
+kapt {
+    correctErrorTypes = true
 }
