@@ -3,6 +3,7 @@ package com.example.mewnfo.data.local.entity
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.mewnfo.data.remote.model.Cat as RemoteCat
 import com.example.mewnfo.data.local.Constants
 import com.example.mewnfo.data.local.model.Image
 import com.example.mewnfo.data.local.model.Weight
@@ -47,4 +48,45 @@ data class Cat (
     val hypoallergenic: Int,
     val referenceImageId: String,
     @Embedded(prefix = "image_") val image: Image? = null
-)
+) {
+    constructor(remoteCat: RemoteCat) : this(
+        id = remoteCat.id,
+        weight = Weight(remoteCat.weight),
+        name = remoteCat.name,
+        cfaUrl = remoteCat.cfaUrl,
+        vetstreetUrl = remoteCat.vetstreetUrl,
+        vcahospitalsUrl = remoteCat.vcahospitalsUrl,
+        temperament = remoteCat.temperament,
+        origin = remoteCat.origin,
+        countryCodes = remoteCat.countryCodes,
+        countryCode = remoteCat.countryCode,
+        description = remoteCat.description,
+        lifeSpan = remoteCat.lifeSpan,
+        indoor = remoteCat.indoor,
+        lap = remoteCat.lap,
+        altNames = remoteCat.altNames,
+        adaptability = remoteCat.adaptability,
+        affectionLevel = remoteCat.affectionLevel,
+        childFriendly = remoteCat.childFriendly,
+        dogFriendly = remoteCat.dogFriendly,
+        energyLevel = remoteCat.energyLevel,
+        grooming = remoteCat.grooming,
+        healthIssues = remoteCat.healthIssues,
+        intelligence = remoteCat.intelligence,
+        sheddingLevel = remoteCat.sheddingLevel,
+        socialNeeds = remoteCat.socialNeeds,
+        strangerFriendly = remoteCat.strangerFriendly,
+        vocalisation = remoteCat.vocalisation,
+        experimental = remoteCat.experimental,
+        hairless = remoteCat.hairless,
+        natural = remoteCat.natural,
+        rare = remoteCat.rare,
+        rex = remoteCat.rex,
+        suppressedTail = remoteCat.suppressedTail,
+        shortLegs = remoteCat.shortLegs,
+        wikipediaUrl = remoteCat.wikipediaUrl,
+        hypoallergenic = remoteCat.hypoallergenic,
+        referenceImageId = remoteCat.referenceImageId,
+        image = remoteCat.image?.let { Image(it) },
+    )
+}

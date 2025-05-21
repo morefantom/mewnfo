@@ -1,7 +1,8 @@
 package com.example.mewnfo.domain.repository
 
 import com.example.mewnfo.domain.model.Cat
+import kotlinx.coroutines.flow.Flow
 
 interface BreedsRepository {
-    suspend fun fetchBreeds(): List<Cat>
+    fun fetchBreeds(): Flow<List<Cat>>
 }

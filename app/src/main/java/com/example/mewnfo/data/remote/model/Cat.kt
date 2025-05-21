@@ -1,5 +1,7 @@
 package com.example.mewnfo.data.remote.model
 
+import com.example.mewnfo.domain.model.Cat as DomainCat
+
 data class Cat(
     val weight: Weight,
     val id: String,
@@ -39,4 +41,44 @@ data class Cat(
     val hypoallergenic: Int,
     val referenceImageId: String,
     val image: Image? = null
-)
+) {
+    fun toDomain(): DomainCat {
+        return DomainCat(
+            name = name,
+            weight = weight.metric,
+            vetstreetUrl = vetstreetUrl,
+            vcahospitalsUrl = vcahospitalsUrl,
+            temperament = temperament,
+            origin = origin,
+            countryCodes = countryCodes,
+            countryCode = countryCode,
+            description = description,
+            lifeSpan = lifeSpan,
+            indoor = indoor,
+            lap = lap,
+            altNames = altNames,
+            adaptability = adaptability,
+            affectionLevel = affectionLevel,
+            childFriendly = childFriendly,
+            dogFriendly = dogFriendly,
+            energyLevel = energyLevel,
+            grooming = grooming,
+            healthIssues = healthIssues,
+            intelligence = intelligence,
+            sheddingLevel = sheddingLevel,
+            socialNeeds = socialNeeds,
+            strangerFriendly = strangerFriendly,
+            vocalisation = vocalisation,
+            experimental = experimental,
+            hairless = hairless,
+            natural = natural,
+            rare = rare,
+            rex = rex,
+            suppressedTail = suppressedTail,
+            shortLegs = shortLegs,
+            wikipediaUrl = wikipediaUrl,
+            hypoallergenic = hypoallergenic,
+            imageUrl = image?.url,
+        )
+    }
+}
